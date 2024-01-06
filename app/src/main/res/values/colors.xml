@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#0043AD</color>
+    <color name="colorPrimaryDark">#092754</color>
+    <color name="colorPrimaryDim">#003A89</color>
+    <color name="colorPrimaryHighlight">#2058BA</color>
+    <color name="dayColorPrimary">#2FC5E9</color>
+    <color name="dayColorPrimaryDark">#2AB2DD</color>
+    <color name="dayColorPrimaryDim">#298BC3</color>
+    <color name="dayColorPrimaryHighlight">#3DB1F3</color>
+</resources>
