@@ -1,3 +1,8 @@
 package com.example.weather_app.Model
 
-data class Hourly(val hour:String, val temp:Int)
+data class Hourly(
+    val temperature_2m: List<Double>,
+    val time: List<String>,
+    val weather_code: List<Int>,
+    val is_day: List<Int>
+)

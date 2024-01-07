@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weather_app.Model.Hourly
+import com.example.weather_app.Model.HourlyView
 import com.example.weather_app.R
 
-class HourlyAdapter(private val mList: ArrayList<Hourly>) : RecyclerView.Adapter<HourlyAdapter.ViewHolder>() {
+class HourlyAdapter(private val mList: ArrayList<HourlyView>) : RecyclerView.Adapter<HourlyAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,6 +30,8 @@ class HourlyAdapter(private val mList: ArrayList<Hourly>) : RecyclerView.Adapter
         // sets the text to the textview from our itemHolder class
         holder.tempView.text = item.temp.toString()
 
+        holder.imageView.setImageResource(item.imageId)
+
     }
 
     // return the number of the items in the list
@@ -41,6 +43,7 @@ class HourlyAdapter(private val mList: ArrayList<Hourly>) : RecyclerView.Adapter
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val hourView: TextView = itemView.findViewById(R.id.hour_id)
         val tempView: TextView = itemView.findViewById(R.id.temp_id)
+        val imageView: ImageView = itemView.findViewById(R.id.hourly_image)
     }
 }
 
