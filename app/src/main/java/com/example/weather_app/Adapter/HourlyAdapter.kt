@@ -1,5 +1,6 @@
 package com.example.weather_app.Adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ class HourlyAdapter(private val mList: ArrayList<HourlyView>) : RecyclerView.Ada
     }
 
     // binds the list items to a view
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val item = mList[position]
@@ -28,7 +30,7 @@ class HourlyAdapter(private val mList: ArrayList<HourlyView>) : RecyclerView.Ada
         holder.hourView.text = item.hour
 
         // sets the text to the textview from our itemHolder class
-        holder.tempView.text = item.temp.toString()
+        holder.tempView.text = item.temp.toString()+"°C"
 
         holder.imageView.setImageResource(item.imageId)
 
