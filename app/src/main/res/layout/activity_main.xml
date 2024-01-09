@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:text="Hanoi"
+            android:text="___, __"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:includeFontPadding="false"
-        android:text="28°"
+        android:text="__°C"
         android:textColor="@color/white"
         android:textSize="60sp"
         android:textStyle="bold"
@@ -104,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Precipitations\nMax.: 31º Min.: 25º"
+        android:text="___________\nMax.: __ºC Min.: __ºC"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +149,7 @@
                     android:id="@+id/humid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="6%"
+                    android:text="__%"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
@@ -174,7 +174,7 @@
                     android:id="@+id/feel_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="90%"
+                    android:text="__%"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
@@ -199,7 +199,7 @@
                     android:id="@+id/wind_speed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="19 km/h"
+                    android:text="__ km/h"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 

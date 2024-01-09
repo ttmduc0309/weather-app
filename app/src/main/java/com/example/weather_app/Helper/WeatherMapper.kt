@@ -8,7 +8,7 @@ object WeatherMapper {
             3 to "Overcast",
             45 to	"Fog",
             48 to "Rime Fog",
-            51..55 to "Light Drizzle",
+            51 to "Light Drizzle",
             53 to "Moderate Drizzle",
             55 to "Dense Drizzle",
             56 to "Light Freezing Drizzle",

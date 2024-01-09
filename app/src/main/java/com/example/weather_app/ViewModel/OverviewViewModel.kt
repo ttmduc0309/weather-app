@@ -53,10 +53,7 @@ class OverviewViewModel(cityData:String): ViewModel() {
         getGeocodeData()
         Log.d("ViewModelInit", "ViewModel showed city geocode : ${cityData}")
     }
-    /**
-     * Gets Mars photos information from the Mars API Retrofit service and updates the
-     * [MarsPhoto] [List] [LiveData].
-     */
+
     private fun getGeocodeData() {
         viewModelScope.launch {
             try {
