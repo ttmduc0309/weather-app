@@ -36,8 +36,6 @@ import kotlin.math.roundToInt
 
 
 class MainActivity : AppCompatActivity() {
-
-    var CITY = "Hanoi"
     @SuppressLint("SetTextI18n", "SimpleDateFormat", "Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +44,8 @@ class MainActivity : AppCompatActivity() {
         val showButton = findViewById<Button>(R.id.searchbtn)
         val editText = findViewById<EditText>(R.id.search)
 
+        var city = "Hanoi"
 
-        Log.d("LiveData", CITY)
 
         val db = DBHelper(this, null)
         val current = Calendar.getInstance().time
@@ -58,17 +56,9 @@ class MainActivity : AppCompatActivity() {
 
         if (checkForInternet(this)) {
             db.resetData()
-//            var city=""
-//            while(city ==""){
-//                showButton.setOnClickListener {
-//                    city= editText.text.toString()
-//                    editText.text.clear()
-//                }
-//            }
-            Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show()
             val factory = object : ViewModelProvider.Factory {
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return OverviewViewModel(CITY) as T
+                    return OverviewViewModel(city) as T
                 }
             }
             val overViewModel: OverviewViewModel by lazy {
@@ -78,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             overViewModel.geocode.observe(this, Observer { newData ->
                 // newData contains the updated value of yourLiveData
                 // You can use this value as needed
-                Log.d("LiveData", "New data received: ${newData}")
+                Log.d("LiveData", "New geocode data received: ${newData}")
                 // Example: Update a TextView with the new data
 
                 db.addGeoData(
@@ -95,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             overViewModel.weather.observe(this, Observer { newData ->
                 // newData contains the updated value of yourLiveData
                 // You can use this value as needed
-                Log.d("LiveData", "New data received: ${newData}")
+                Log.d("LiveData", "New weather data received: ${newData}")
                 val des = WeatherMapper.getWeatherCondition(newData.current.weather_code)
                 val maxTemp = newData.daily.temperature_2m_max[0].roundToInt()
                 val minTemp = newData.daily.temperature_2m_min[0].roundToInt()
@@ -166,6 +156,17 @@ class MainActivity : AppCompatActivity() {
                 recyclerview.adapter = adapter
             })
             findViewById<TextView>(R.id.updated).text= "Last Updated: "+ updateAt.format(current)
+            Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show()
+
+            showButton.setOnClickListener {
+                val userEnteredCity = editText.text.toString()
+                if (userEnteredCity.isNotEmpty()) {
+                    city = userEnteredCity
+                    updateWeatherForCity(city, overViewModel)
+                } else {
+                    Toast.makeText(this, "Please enter a city", Toast.LENGTH_SHORT).show()
+                }
+            }
         } else {
             Toast.makeText(this, "Disconnected", Toast.LENGTH_SHORT).show()
             val geoData =db.getGeoData()
@@ -215,10 +216,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+    private fun updateWeatherForCity(city: String, overViewModel: OverviewViewModel) {
+        overViewModel.newCity(city)
+    }
+    private fun setupViews(CITY: String){
 
     }
-
-
     private fun checkForInternet(context: Context): Boolean {
 
         // register activity with the connectivity manager service

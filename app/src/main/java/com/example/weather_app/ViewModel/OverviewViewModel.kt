@@ -47,6 +47,12 @@ class OverviewViewModel(cityData:String): ViewModel() {
         getGeocodeData()
     }
 
+    fun newCity(cityData: String)
+    {
+        _city=cityData
+        getGeocodeData()
+        Log.d("ViewModelInit", "ViewModel showed city geocode : ${cityData}")
+    }
     /**
      * Gets Mars photos information from the Mars API Retrofit service and updates the
      * [MarsPhoto] [List] [LiveData].
@@ -56,7 +62,10 @@ class OverviewViewModel(cityData:String): ViewModel() {
             try {
                 val geocodeApi = GeocodeHelper.getInstance().create(GeoCodeApi::class.java)
                 val listResult = geocodeApi.getGeocode(city,1,"en","json")
+
                 _geocode.value = listResult.body()
+                Log.d("ViewModelInit", "ViewModel showed geocode like this: ${listResult}")
+
             } catch (e: Exception) {
                 Log.d("error: ", "Failure: ${e.message}")
             }
